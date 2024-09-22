@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 
-const postDirectory = path.join(process.cwd(), 'posts');
+const postDirectory = path.join(process.cwd(), 'src', 'posts');
 // process.cwd() : 현재 실행되고 있는 디렉토리의 절대 경로
 // `path.join()`으로 두 경로를 합쳤기 때문에 '/현재경로/posts'라는 경로가 담김
 
@@ -21,7 +21,7 @@ export function getSortedPostsData() {
 
         return {
             id,
-            ...(matterResult.data as { data: string; title: string }),
+            ...(matterResult.data as { date: string; title: string }),
         };
     });
 
