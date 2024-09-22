@@ -19,7 +19,7 @@ export default function Home({ allPostData }: { allPostData: { date: string; tit
                 <ul className={homestyles.headinglist}>
                     {allPostData.map(({ id, title, date }) => (
                         <li className={homestyles.listItem} key={id}>
-                            <a href={`/posts/${id}`}>{title}</a>
+                            <a>{title}</a>
                             <br />
                             <small className={homestyles.lightText}>{date}</small>
                         </li>
@@ -32,7 +32,7 @@ export default function Home({ allPostData }: { allPostData: { date: string; tit
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const allPostData = getSortedPostsData();
+    const allPostData = getSortedPostsData(); // md파일을 날짜별로 정렬해서 반환해줌
     return {
         props: {
             allPostData,

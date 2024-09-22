@@ -15,9 +15,17 @@ export function getSortedPostsData() {
         const id = fileName.replace(/\.md$/, ''); // fileName에서 '.md'를 제거해줌
 
         const fullPath = path.join(postDirectory, fileName); // '/현재경로/fileName' 형태의 경로
-        const fileContents = fs.readFileSync(fullPath, 'utf-8');
+        const fileContents = fs.readFileSync(fullPath, 'utf-8'); // 첫번째 인자의 파일을 인코딩하여 저장
 
-        const matterResult = matter(fileContents);
+        const matterResult = matter(fileContents); // 마크다운 파일의 내용을 파싱
+        /**
+         {
+            data: {}, // 파싱된 프론트매터 데이터
+            content: '', // 프론트매터를 제외한 파일의 본문 내용
+            excerpt: '', // 발췌 내용 (설정된 경우)
+            orig: '' // 원본 파일 내용
+        }
+            */
 
         return {
             id,
@@ -25,6 +33,7 @@ export function getSortedPostsData() {
         };
     });
 
+    // 정렬해서 return
     return allPostsData.sort((a, b) => {
         if (a.date < b.date) {
             return 1;
