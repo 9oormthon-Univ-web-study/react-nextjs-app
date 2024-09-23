@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import homestyles from '../src/styles/Home.module.css';
+import homestyles from '../styles/Home.module.css';
 import { getSortedPostsData } from '@/lib/post';
 import Link from 'next/link';
 
