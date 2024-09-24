@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import CreatePost from './CreatePost';
 
 interface Post {
     collectionId: string;
@@ -27,6 +28,8 @@ const PostPage = async () => {
             {posts?.map((post) => {
                 return <PostItem key={post.id} post={post} />;
             })}
+
+            <CreatePost />
         </div>
     );
 };
